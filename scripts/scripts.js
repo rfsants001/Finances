@@ -1,3 +1,16 @@
+const Export = {
+    pdf(event){
+        const data = new Date();
+        const dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
+        $("#table-transactions").btechco_excelexport({
+            containerid: "table-transactions"
+           , datatype: $datatype.Table
+           , filename: 'Transação do dia: ' + dataFormatada
+        });
+        event.preventDefault()
+    }
+}
+
 const Modal = {
     open(){
         document.querySelector('.modal-overlay').classList.add('active');
@@ -152,6 +165,50 @@ const Form = {
     amount: document.querySelector('input#amount'),
     date: document.querySelector('input#date'),
 
+    plusSignal(){
+        const incomeBtn = document.querySelector('#income-btn-sm');
+        incomeBtn.classList.add('active');
+        const expenseBtn = document.querySelector('#expense-btn-sm');
+        try {
+            if(expenseBtn.classList.contains('active')){
+                expenseBtn.classList.remove('active');
+            }
+            if(!Form.amount.value){
+                if(incomeBtn.classList.contains('active')){
+                    incomeBtn.classList.remove('active');
+                }
+                throw new Error("Preencha o valor antes");
+            }else {
+                if(Form.amount.value < 0){
+                    Form.amount.value *= -1;
+                }
+            }
+        } catch (error) {
+            alert(error);
+        }
+    },
+    minusSignal(){
+        const expenseBtn = document.querySelector('#expense-btn-sm');
+        expenseBtn.classList.add('active');
+        const  incomeBtn= document.querySelector('#income-btn-sm');
+        try {
+            if(incomeBtn.classList.contains('active')){
+                incomeBtn.classList.remove('active');
+            }
+            if(!Form.amount.value){
+                if(expenseBtn.classList.contains('active')){
+                    expenseBtn.classList.remove('active');
+                }
+                throw new Error("Preencha o valor antes");
+            }else {
+                if(Form.amount.value > 0){
+                    Form.amount.value *= -1;
+                }
+            }
+        } catch (error) {
+            alert(error);
+        }
+    },
     getValues(){
         return {
             description: Form.description.value,
@@ -194,6 +251,16 @@ const Form = {
             Transaction.add(transaction);
 
             Form.clearFields();
+
+            const incomeBtn = document.querySelector('#income-btn-sm');
+            if(incomeBtn.classList.contains('active')){
+                incomeBtn.classList.remove('active');
+            }
+
+            const expenseBtn = document.querySelector('#expense-btn-sm');
+            if(expenseBtn.classList.contains('active')){
+                expenseBtn.classList.remove('active');
+            }
 
             Modal.close();
         } catch (error) {

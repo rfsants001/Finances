@@ -54,7 +54,7 @@ a:hover {
     color: var(--light-green);
 }
 
-button {
+button, input[type="button"]{
     width: 100%;
     height: 50px;
 
@@ -67,7 +67,8 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:hover,  input[type="button"]:hover{
+    transition: all 1s;
     background: var(--light-green);
 }
 
@@ -100,6 +101,24 @@ header{
 #logo {
     color: #fff;
     font-weight: 100;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo img{
+    width: 45px;
+    height: 45px;
+}
+
+#logo h1 {
+    margin: 0 10px;
+    font-size: 2.5rem;
+}
+
+#logo h1 .simbol{
+    color: var(--green);
 }
 
 #balance {
@@ -156,6 +175,18 @@ header{
     display: block;
     width: 100%;
     overflow-x: auto;
+}
+
+.group-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#btnExport{
+    width: auto;
+    padding: 0 10px;
+    font-weight: 700;
 }
 
 #data-table {
@@ -257,6 +288,93 @@ td img {
     margin-top: 0.8rem;
 }
 
+.input-group .group-amount{
+    display: flex;
+}
+
+.input-group .group-btn{
+    display:flex;
+}
+
+.group-btn button.btn-sm{
+    width: 70px;
+}
+
+.group-btn button.btn-sm.income-btn{
+    display: flex;
+    align-items: center;
+    color: var(--green);
+    border: 2px var(--green) solid;
+    border-right: 0px;
+    border-radius:  0.25rem 0px  0px 0.25rem ;
+    background-color: #fff;
+}
+
+.group-btn button.btn-sm.income-btn .img-nonactive{
+    position: absolute;
+    height: 40px;
+    opacity: 1;
+    z-index:1;
+    width: 40px;
+    margin: 0 15px;
+}
+
+.group-btn button.btn-sm.income-btn .img-active{
+    position: absolute;
+    height: 40px;
+    margin: 0 15px;
+}
+
+.group-btn button.btn-sm.income-btn:hover,
+.group-btn button.btn-sm.income-btn.active{
+    color: #fff;
+    background-color: var(--green);
+}
+
+
+.group-btn button.btn-sm.income-btn .img-nonactive:hover,
+.group-btn button.btn-sm.income-btn.active .img-nonactive{
+    opacity: 0;
+}
+
+.group-btn button.btn-sm.expense-btn {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-left: 0px;
+    border-radius: 0px 0.25rem 0.25rem 0px;
+    background-color: #fff;
+}
+
+.group-btn button.btn-sm.expense-btn .img-nonactive{
+    position: absolute;
+    height: 40px;
+    opacity: 1;
+    z-index:1;
+    width: 40px;
+    margin: -20px -20px 0px;
+}
+
+.group-btn button.btn-sm.expense-btn .img-active{
+    position: absolute;
+    height: 40px;
+    margin: -20px -20px 0px;
+}
+
+.group-btn button.btn-sm.expense-btn .img-nonactive:hover,
+.group-btn button.btn-sm.expense-btn.active .img-nonactive{
+    opacity: 0;
+}
+
+.group-btn button.btn-sm.expense-btn:hover,
+.group-btn button.btn-sm.expense-btn.active{
+    color: #fff;
+    background-color: var(--red);
+}
+
+.group-btn button.btn-sm:last-child {
+    margin: 0 10px 0 0;
+}
+
 .input-group small.help {
     opacity: 0.7;
     color: #9e2929;
@@ -291,5 +409,28 @@ footer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .input-group .group-amount {
+        display: block;
+    }
+    .input-group .group-btn {
+        display: flex;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    .group-btn button.btn-sm.income-btn {
+        width: 50%;
+    }
+    .group-btn button.btn-sm.income-btn .img-nonactive {
+        margin: 0 60px;
+    }
+    .group-btn button.btn-sm.income-btn .img-active {
+        margin: 0 60px;
+    }
+    .group-btn button.btn-sm.expense-btn {
+        width: 50%;
     }
 }

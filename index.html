@@ -6,16 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="assets/favicon.ico" />
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,700;1,100;1,200;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>dev.finance$</title>
+    <title>Finance$</title>
 </head>
 
 <body>
-    <header>
-        <img src="./assets/logo.svg" alt="Dev Finance">
+    <header id="logo">
+        <img src="./assets/money.svg" alt="Finances">
+        <h1>Finance<span class="simbol">$</span></h1>
     </header>
 
     <main class="container">
@@ -47,26 +49,31 @@
         <section id="transaction">
             <h2 class="sr-only">Transações</h2>
 
-            <a 
-            href="#" 
-            class="button new"
-            onclick="Modal.open()"
-            >
-                + Nova Transação
-            </a>
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Descrição</th>
-                        <th>Valor</th>
-                        <th>Data</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                
-                </tbody>
-            </table>
+            <div class="group-buttons">
+                <a 
+                href="#" 
+                class="button new"
+                onclick="Modal.open()"
+                >
+                    + Nova Transação
+                </a>
+                <input type="button" value="Exportar Tabela" id="btnExport" class="button new" onclick="Export.pdf(event)">
+            </div>
+            <div id="table-transactions">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Data</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
@@ -88,14 +95,34 @@
 
                     <div class="input-group">
                         <label class="sr-only" for="amount">Valor</label>
-                        <input 
-                        type="number" 
-                        step="0.01"
-                        id="amount" 
-                        name="amount"
-                        placeholder="0,00"
-                        
-                        />
+                        <div class="group-amount">
+                            <div class="group-btn">
+                                <button 
+                                    id="income-btn-sm" 
+                                    type="button" 
+                                    class="btn-sm income-btn" 
+                                    onclick="Form.plusSignal()">
+                                    <img class="img-nonactive" src="./assets/up-arrow-green.svg" alt="Entrada">
+                                    <img class="img-active" src="./assets/up-arrow.svg" alt="Entrada">
+                                </button>
+                                <button 
+                                    id="expense-btn-sm" 
+                                    type="button" 
+                                    class="btn-sm expense-btn" 
+                                    onclick="Form.minusSignal()">
+                                    <img class="img-nonactive" src="./assets/down-arrow-red.svg" alt="Saida">
+                                    <img class="img-active" src="./assets/down-arrow.svg" alt="Saida">
+                                </button>
+                            </div>
+                            <input 
+                            type="number" 
+                            step="0.01"
+                            id="amount" 
+                            name="amount"
+                            placeholder="0,00"
+                            
+                            />
+                        </div>
                         <small class="help">Use o sinal - (negativo) para despesas e , (virgula) para casas decimais</small>
                     </div>
 
@@ -119,10 +146,14 @@
     </div>
 
     <footer>
-        <p>2021 - dev.finance$</p>
+        <p>2021 - Finances$</p>
     </footer>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="./scripts/jquery.base64.js"></script>
+    <script src="./scripts/jquery.btechco.excelexport.js"></script>
+    <script src="./scripts/scripts.js"></script>
+    
 
-    <script src="scripts.js"></script>
 </body>
 
 </html>

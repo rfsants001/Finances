@@ -1,16 +1,3 @@
-const Export = {
-    pdf(event){
-        const data = new Date();
-        const dataFormatada = ((data.getDate() )) + "/" + ((data.getMonth() + 1)) + "/" + data.getFullYear(); 
-        $("#table-transactions").btechco_excelexport({
-            containerid: "table-transactions"
-           , datatype: $datatype.Table
-           , filename: 'Transação do dia: ' + dataFormatada
-        });
-        event.preventDefault()
-    }
-}
-
 const Modal = {
     open(){
         document.querySelector('.modal-overlay').classList.add('active');

@@ -177,11 +177,6 @@ header{
     overflow-x: auto;
 }
 
-.group-buttons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 #btnExport{
     width: auto;
@@ -300,30 +295,21 @@ td img {
     width: 70px;
 }
 
+.group-btn button.btn-sm span {
+    margin: 0 auto;
+}
+
 .group-btn button.btn-sm.income-btn{
     display: flex;
     align-items: center;
     color: var(--green);
     border: 2px var(--green) solid;
     border-right: 0px;
-    border-radius:  0.25rem 0px  0px 0.25rem ;
+    border-radius:  2.5rem 0px  0px 2.5rem ;
     background-color: #fff;
 }
 
-.group-btn button.btn-sm.income-btn .img-nonactive{
-    position: absolute;
-    height: 40px;
-    opacity: 1;
-    z-index:1;
-    width: 40px;
-    margin: 0 15px;
-}
 
-.group-btn button.btn-sm.income-btn .img-active{
-    position: absolute;
-    height: 40px;
-    margin: 0 15px;
-}
 
 .group-btn button.btn-sm.income-btn:hover,
 .group-btn button.btn-sm.income-btn.active{
@@ -341,29 +327,10 @@ td img {
     color: var(--red);
     border: 2px var(--red) solid;
     border-left: 0px;
-    border-radius: 0px 0.25rem 0.25rem 0px;
+    border-radius: 0px 2.5rem 2.5rem 0px;
     background-color: #fff;
 }
 
-.group-btn button.btn-sm.expense-btn .img-nonactive{
-    position: absolute;
-    height: 40px;
-    opacity: 1;
-    z-index:1;
-    width: 40px;
-    margin: -20px -20px 0px;
-}
-
-.group-btn button.btn-sm.expense-btn .img-active{
-    position: absolute;
-    height: 40px;
-    margin: -20px -20px 0px;
-}
-
-.group-btn button.btn-sm.expense-btn .img-nonactive:hover,
-.group-btn button.btn-sm.expense-btn.active .img-nonactive{
-    opacity: 0;
-}
 
 .group-btn button.btn-sm.expense-btn:hover,
 .group-btn button.btn-sm.expense-btn.active{
@@ -423,12 +390,6 @@ footer {
     }
     .group-btn button.btn-sm.income-btn {
         width: 50%;
-    }
-    .group-btn button.btn-sm.income-btn .img-nonactive {
-        margin: 0 60px;
-    }
-    .group-btn button.btn-sm.income-btn .img-active {
-        margin: 0 60px;
     }
     .group-btn button.btn-sm.expense-btn {
         width: 50%;
